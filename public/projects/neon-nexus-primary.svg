@@ -1,0 +1,45 @@
+<svg width="800" height="560" viewBox="0 0 800 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nexus-bg" x1="60" y1="40" x2="760" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#11092B" />
+      <stop offset="0.5" stop-color="#1B1C4A" />
+      <stop offset="1" stop-color="#04101E" />
+    </linearGradient>
+    <linearGradient id="nexus-glow" x1="120" y1="80" x2="680" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F5FF" stop-opacity="0.65" />
+      <stop offset="1" stop-color="#6C5CE7" stop-opacity="0" />
+    </linearGradient>
+    <radialGradient id="nexus-pulse" cx="0" cy="0" r="1" gradientTransform="translate(560 160) rotate(45) scale(240 200)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF54B0" stop-opacity="0.85" />
+      <stop offset="1" stop-color="#FF54B0" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-100" y="-100" width="1000" height="760" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="40" result="blur" />
+    </filter>
+  </defs>
+  <rect width="800" height="560" fill="url(#nexus-bg)" rx="32" />
+  <rect x="30" y="30" width="740" height="500" rx="26" stroke="#1E2957" stroke-width="2" stroke-dasharray="10 10" opacity="0.35" />
+  <rect x="60" y="60" width="680" height="440" rx="24" fill="#0C102F" opacity="0.55" />
+  <rect x="60" y="60" width="680" height="440" rx="24" fill="url(#nexus-glow)" opacity="0.8" />
+  <circle cx="520" cy="180" r="180" fill="url(#nexus-pulse)" opacity="0.6" />
+  <g opacity="0.7">
+    <path d="M120 180H680" stroke="#00F5FF" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.65" />
+    <path d="M120 260H680" stroke="#00F5FF" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.45" />
+    <path d="M120 340H680" stroke="#00F5FF" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.45" />
+  </g>
+  <g opacity="0.85">
+    <path d="M160 320C210 250 300 220 380 260C470 306 550 236 620 170" stroke="#6C5CE7" stroke-width="3" stroke-linecap="round" />
+    <path d="M220 360C300 310 360 300 440 320C520 340 580 310 640 250" stroke="#00F5FF" stroke-width="3" stroke-linecap="round" stroke-dasharray="12 18" opacity="0.8" />
+    <circle cx="420" cy="280" r="10" fill="#00F5FF" />
+    <circle cx="540" cy="230" r="8" fill="#FF54B0" />
+    <circle cx="310" cy="300" r="7" fill="#6C5CE7" />
+  </g>
+  <rect x="120" y="120" width="200" height="80" rx="16" fill="rgba(16, 21, 56, 0.9)" stroke="#6C5CE7" stroke-opacity="0.4" />
+  <text x="140" y="154" fill="#9BA8FF" font-family="Space Grotesk" font-size="16" letter-spacing="0.2em">NEON NEXUS</text>
+  <text x="140" y="182" fill="#FFFFFF" font-family="Space Grotesk" font-weight="600" font-size="24">Live Metrics</text>
+  <rect x="140" y="200" width="160" height="8" rx="4" fill="#1B2147" />
+  <rect x="140" y="200" width="110" height="8" rx="4" fill="#00F5FF" />
+  <g filter="url(#glow)" opacity="0.6">
+    <ellipse cx="200" cy="400" rx="120" ry="60" fill="#6C5CE7" />
+  </g>
+</svg>

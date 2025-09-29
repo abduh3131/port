@@ -1,0 +1,24 @@
+<svg width="660" height="460" viewBox="0 0 660 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="p-grid" x1="60" y1="40" x2="600" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#080E1C" />
+      <stop offset="1" stop-color="#03070E" />
+    </linearGradient>
+  </defs>
+  <rect width="660" height="460" rx="28" fill="url(#p-grid)" />
+  <rect x="48" y="48" width="564" height="364" rx="20" fill="rgba(9, 12, 28, 0.92)" stroke="rgba(255, 255, 255, 0.08)" />
+  <g opacity="0.4">
+    <path d="M120 180H540" stroke="#FF54B0" stroke-dasharray="8 8" />
+    <path d="M120 220H540" stroke="#FF54B0" stroke-dasharray="8 8" />
+    <path d="M120 260H540" stroke="#FF54B0" stroke-dasharray="8 8" />
+    <path d="M120 300H540" stroke="#FF54B0" stroke-dasharray="8 8" />
+  </g>
+  <path d="M140 300H220L240 250L280 330L320 210L360 340L400 230L440 310L480 260L520 340L560 260L600 300" stroke="#00F5FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
+  <rect x="140" y="120" width="200" height="60" rx="16" fill="#111834" stroke="#FF54B0" stroke-opacity="0.4" />
+  <text x="158" y="148" fill="#FF8CCF" font-family="Space Grotesk" font-size="16" letter-spacing="0.18em">DIAGNOSTICS</text>
+  <text x="158" y="174" fill="#FFFFFF" font-family="Space Grotesk" font-size="22" font-weight="600">Recovery 87%</text>
+  <rect x="360" y="120" width="180" height="120" rx="18" fill="rgba(16, 20, 46, 0.92)" stroke="rgba(255, 84, 176, 0.35)" />
+  <text x="380" y="152" fill="#FF54B0" font-family="Space Grotesk" font-size="14" letter-spacing="0.2em">PATIENT</text>
+  <text x="380" y="180" fill="#FFFFFF" font-family="Space Grotesk" font-size="22" font-weight="600">Mirai-7</text>
+  <text x="380" y="206" fill="#FF8CCF" font-family="Space Grotesk" font-size="14" opacity="0.75">Status: Stabilised</text>
+</svg>
