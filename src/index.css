@@ -9,10 +9,10 @@
   --bg-layer: rgba(11, 22, 33, 0.75);
   --panel: rgba(12, 25, 36, 0.88);
   --panel-strong: rgba(14, 37, 54, 0.95);
-  --border: rgba(75, 255, 168, 0.18);
-  --accent: #5cffb4;
-  --accent-strong: #2adf89;
-  --accent-soft: rgba(44, 199, 129, 0.35);
+  --border: rgba(126, 166, 255, 0.18);
+  --accent: #7aa0ff;
+  --accent-strong: #4c7dff;
+  --accent-soft: rgba(122, 160, 255, 0.35);
   --text-primary: #f1f5f9;
   --text-muted: #7c93a5;
   --text-soft: #4d6372;
@@ -53,6 +53,6 @@ select {
 }
 
 ::selection {
-  background: rgba(92, 255, 180, 0.3);
+  background: rgba(126, 166, 255, 0.3);
   color: inherit;
 }
