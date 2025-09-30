@@ -22,10 +22,13 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/connect" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
+      <footer className="footer">
+        <span>//</span> Portfolio access log is monitored · crafted with intent in 2025
+      </footer>
     </div>
   )
 }

@@ -1,46 +1,51 @@
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
-import Reveal from './Reveal.jsx'
+const ProjectCard = ({ project }) => {
+  const { title, tagline, description, highlights = [], technologies = [], repo, live, images = [] } = project
 
-const ProjectCard = ({ project, index }) => (
-  <Reveal as="article" className="project-card" delay={Math.min(index * 0.08, 0.35)}>
-    <div className="project-card__media">
-      {project.images.map((image, idx) => (
-        <img
-          key={image.src}
-          src={image.src}
-          alt={image.alt}
-          className={`project-card__image project-card__image--${idx}`}
-        />
-      ))}
-    </div>
-    <div className="project-card__content">
-      <div className="project-card__label">{project.tagline}</div>
-      <h3>{project.title}</h3>
-      <p>{project.description}</p>
-      <ul className="project-card__highlights">
-        {project.highlights.map((highlight) => (
-          <li key={highlight}>{highlight}</li>
-        ))}
-      </ul>
-      <div className="project-card__footer">
-        <div className="project-card__tech">
-          {project.technologies.map((tech) => (
-            <span key={tech}>{tech}</span>
-          ))}
-        </div>
+  return (
+    <article className="project-card">
+      <div className="project-card__header">
+        <span className="project-card__tag">{tagline}</span>
+        <h3 className="project-card__title">{title}</h3>
+        <p className="project-card__description">{description}</p>
+        {highlights.length > 0 && (
+          <ul className="project-card__highlights">
+            {highlights.map((highlight) => (
+              <li key={highlight}>{highlight}</li>
+            ))}
+          </ul>
+        )}
+        {technologies.length > 0 && (
+          <div className="project-card__meta">
+            {technologies.map((tech) => (
+              <span key={tech} className="project-card__chip">
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
         <div className="project-card__links">
-          <a href={project.repo} target="_blank" rel="noreferrer">
-            <FiGithub /> Code
-          </a>
-          {project.live && (
-            <a href={project.live} target="_blank" rel="noreferrer">
-              <FiExternalLink /> Live
+          {repo && (
+            <a href={repo} target="_blank" rel="noopener noreferrer" aria-label={`${title} GitHub repository`}>
+              <span>GitHub</span>
+            </a>
+          )}
+          {live && (
+            <a href={live} target="_blank" rel="noopener noreferrer" aria-label={`${title} live preview`}>
+              <span>Live</span>
             </a>
           )}
         </div>
       </div>
-    </div>
-  </Reveal>
-)
+      <div className="project-card__media">
+        {images.map((image) => (
+          <figure key={image.src}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            <figcaption>{image.alt}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </article>
+  )
+}
 
 export default ProjectCard

@@ -1,14 +1,16 @@
-# Nova Quinn · Futuristic Portfolio
+# Elliot Cipher · Signal Portfolio
 
-A multi-page, animation-rich personal portfolio designed to showcase immersive engineering work, projects, and contact pathways for future collaborators.
+Hacker-inspired personal portfolio for showcasing secure product work, projects, and contact channels. Built as a modular
+React/Vite app so you can extend every section without touching layout code.
 
 ## Features
 
-- **Cinematic landing experience** with animated stats, capability highlights, and a career trajectory timeline.
-- **Modular projects gallery** powered by structured data and reusable cards so new work can be added with a single object.
-- **Résumé hub** featuring downloadable PDF, skill constellations, and recognition timeline.
-- **Communications console** linking to GitHub, LinkedIn, and email with neon hover interactions.
-- **Futuristic ambience** created with layered gradients, particle fields, and Framer Motion transitions across all routes.
+- **Hacker-styled landing page** with terminal panel, mission stats, and focus areas that surface your value quickly.
+- **Modular projects grid** powered by `src/data/projects.js` so adding a new project only requires updating structured data and
+  dropping in artwork.
+- **Résumé snapshot** including downloadable PDF, recognition log, and skills stack grouped for quick scanning.
+- **Contact console** highlighting preferred channels and availability, ready for your handles and inbox.
+- **Lightweight animation system** using IntersectionObserver reveals and CSS-driven ambience for a smooth experience.
 
 ## Tech stack
 
@@ -25,8 +27,11 @@ npm install
 npm run dev
 ```
 
-Open the dev server URL (shown in the terminal) in your browser to explore the site.
+Update the profile copy, project data, and contact links to match your own story. Replace `public/resume.pdf` with your actual
+CV for the download button.
 
-## Adding projects
+## Extending projects
 
-Projects live in [`src/data/projects.js`](src/data/projects.js). Add a new object with titles, descriptions, technologies, links, and image paths. Drop accompanying artwork into `public/projects/` to display it automatically.
+Projects live in [`src/data/projects.js`](src/data/projects.js). Add new entries with titles, descriptions, tech stacks, and
+image paths (stored in `public/projects/`). The `ProjectCard` component will render them automatically with animations,
+ensuring the gallery stays future-proof.
