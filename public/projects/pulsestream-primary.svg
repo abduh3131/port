@@ -1,0 +1,30 @@
+<svg width="780" height="540" viewBox="0 0 780 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pulse-bg" x1="80" y1="40" x2="700" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#06111D" />
+      <stop offset="0.5" stop-color="#10203A" />
+      <stop offset="1" stop-color="#02080F" />
+    </linearGradient>
+    <radialGradient id="pulse-glow" cx="0" cy="0" r="1" gradientTransform="translate(520 190) rotate(30) scale(240 210)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF54B0" stop-opacity="0.85" />
+      <stop offset="1" stop-color="#FF54B0" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="780" height="540" rx="32" fill="url(#pulse-bg)" />
+  <rect x="36" y="36" width="708" height="468" rx="26" fill="rgba(8, 12, 30, 0.92)" stroke="rgba(255, 255, 255, 0.08)" />
+  <circle cx="500" cy="190" r="170" fill="url(#pulse-glow)" />
+  <g opacity="0.8">
+    <path d="M140 300H220L240 260L280 340L320 220L360 360L400 240L440 320L480 260L520 360L560 260L600 300H640" stroke="#00F5FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="240" cy="260" r="9" fill="#00F5FF" />
+    <circle cx="320" cy="220" r="10" fill="#FF54B0" />
+    <circle cx="440" cy="320" r="10" fill="#6C5CE7" />
+    <circle cx="520" cy="360" r="9" fill="#FF54B0" />
+  </g>
+  <rect x="140" y="120" width="200" height="90" rx="18" fill="#111A36" stroke="#FF54B0" stroke-opacity="0.4" />
+  <text x="158" y="152" fill="#FFC2DE" font-family="Space Grotesk" font-size="16" letter-spacing="0.2em">PULSESTREAM</text>
+  <text x="158" y="182" fill="#FFFFFF" font-family="Space Grotesk" font-size="26" font-weight="600">Vitals core</text>
+  <rect x="380" y="120" width="260" height="120" rx="20" fill="rgba(18, 22, 52, 0.92)" stroke="rgba(255, 84, 176, 0.35)" />
+  <text x="400" y="154" fill="#FF54B0" font-family="Space Grotesk" font-size="14" letter-spacing="0.22em">STATUS</text>
+  <text x="400" y="182" fill="#FFFFFF" font-family="Space Grotesk" font-size="22" font-weight="600">Stable rhythm</text>
+  <text x="400" y="210" fill="#FFC2DE" font-family="Space Grotesk" font-size="14" opacity="0.75">Spectral variance ±0.3 · Recovery in progress</text>
+</svg>

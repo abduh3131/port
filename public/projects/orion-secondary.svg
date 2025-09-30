@@ -1,0 +1,30 @@
+<svg width="660" height="460" viewBox="0 0 660 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grid" x1="60" y1="40" x2="600" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B1028" />
+      <stop offset="1" stop-color="#050B18" />
+    </linearGradient>
+  </defs>
+  <rect width="660" height="460" rx="28" fill="url(#grid)" />
+  <rect x="48" y="48" width="564" height="364" rx="20" fill="rgba(10, 14, 34, 0.92)" stroke="rgba(255, 255, 255, 0.08)" />
+  <g opacity="0.45">
+    <path d="M120 180H540" stroke="#6C5CE7" stroke-dasharray="8 8" />
+    <path d="M120 220H540" stroke="#6C5CE7" stroke-dasharray="8 8" />
+    <path d="M120 260H540" stroke="#6C5CE7" stroke-dasharray="8 8" />
+    <path d="M120 300H540" stroke="#6C5CE7" stroke-dasharray="8 8" />
+  </g>
+  <g opacity="0.7">
+    <path d="M160 320L240 240L320 280L400 200L480 260" stroke="#00F5FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="240" cy="240" r="10" fill="#FF54B0" />
+    <circle cx="320" cy="280" r="8" fill="#6C5CE7" />
+    <circle cx="400" cy="200" r="8" fill="#00F5FF" />
+    <circle cx="480" cy="260" r="8" fill="#FF54B0" />
+  </g>
+  <rect x="140" y="120" width="160" height="60" rx="14" fill="#111739" stroke="#6C5CE7" stroke-opacity="0.4" />
+  <text x="158" y="148" fill="#9FA8FF" font-family="Space Grotesk" font-size="16" letter-spacing="0.18em">SYNC</text>
+  <text x="158" y="174" fill="#FFFFFF" font-family="Space Grotesk" font-size="22" font-weight="600">Creative nodes</text>
+  <rect x="340" y="120" width="200" height="120" rx="18" fill="rgba(14, 18, 48, 0.92)" stroke="rgba(0, 245, 255, 0.22)" />
+  <text x="360" y="152" fill="#00F5FF" font-family="Space Grotesk" font-size="14" letter-spacing="0.2em">NEXT UP</text>
+  <text x="360" y="180" fill="#FFFFFF" font-family="Space Grotesk" font-size="22" font-weight="600">Storyboard jam</text>
+  <text x="360" y="208" fill="#9FA8FF" font-family="Space Grotesk" font-size="14" opacity="0.75">Guest: Aurora · 19:30 UTC</text>
+</svg>
