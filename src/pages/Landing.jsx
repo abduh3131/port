@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageTransition from '../components/PageTransition.jsx'
+import Reveal from '../components/Reveal.jsx'
 
 const stats = [
   { value: '12M+', label: 'Lines of code orchestrated', detail: 'across high-availability systems' },
@@ -47,74 +47,38 @@ const timeline = [
 const Landing = () => (
   <PageTransition className="landing">
     <section className="landing__hero">
-      <motion.div
-        className="landing__signal"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.6, scale: 1 }}
-        transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
-      />
+      <Reveal as="div" className="landing__signal" distance={0} delay={0.2} />
       <div className="landing__intro">
-        <motion.p
-          className="landing__eyebrow"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <Reveal as="p" className="landing__eyebrow" delay={0.15} distance={12}>
           Hello future collaborator — I’m Nova Quinn.
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
+        </Reveal>
+        <Reveal as="h1" delay={0.3}>
           I engineer luminous digital worlds where complex systems feel effortless.
-        </motion.h1>
-        <motion.p
-          className="landing__lead"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.6 }}
-        >
+        </Reveal>
+        <Reveal as="p" className="landing__lead" delay={0.45}>
           With a background in immersive design and mission operations, I craft experiences that merge
           narrative, data, and motion. I help ambitious teams translate raw telemetry into decisions,
           amplify their brand stories, and build resilient interfaces that glow in every galaxy.
-        </motion.p>
-        <motion.div
-          className="landing__actions"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.8 }}
-        >
-          <Link className="button button--primary" to="/projects">
+        </Reveal>
+        <Reveal as="div" className="landing__actions" delay={0.6}>
+          <Link className="button button--primary" to="/projects" aria-label="Explore projects">
             Explore projects
           </Link>
-          <Link className="button button--ghost" to="/connect">
+          <Link className="button button--ghost" to="/connect" aria-label="Get in touch">
             Let’s connect
           </Link>
-        </motion.div>
+        </Reveal>
       </div>
-      <motion.div
-        className="landing__halo"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.5, scale: 1 }}
-        transition={{ duration: 1.4, delay: 0.6 }}
-      />
+      <Reveal as="div" className="landing__halo" distance={0} delay={0.5} />
     </section>
 
     <section className="landing__stats">
       {stats.map((stat) => (
-        <motion.div
-          key={stat.label}
-          className="landing__stat"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8 }}
-        >
+        <Reveal key={stat.label} className="landing__stat" threshold={0.35}>
           <span className="landing__stat-value">{stat.value}</span>
           <span className="landing__stat-label">{stat.label}</span>
           <span className="landing__stat-detail">{stat.detail}</span>
-        </motion.div>
+        </Reveal>
       ))}
     </section>
 
@@ -125,15 +89,7 @@ const Landing = () => (
       </div>
       <div className="landing__capability-grid">
         {capabilities.map((capability) => (
-          <motion.article
-            key={capability.title}
-            className="landing__capability"
-            whileHover={{ translateY: -10 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
-          >
+          <Reveal key={capability.title} as="article" className="landing__capability">
             <h3>{capability.title}</h3>
             <p>{capability.description}</p>
             <div className="landing__capability-tools">
@@ -141,7 +97,7 @@ const Landing = () => (
                 <span key={tool}>{tool}</span>
               ))}
             </div>
-          </motion.article>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -152,19 +108,12 @@ const Landing = () => (
         <p>Each orbit adds new dimensions to how I craft interfaces and lead teams.</p>
       </div>
       <div className="landing__timeline-grid">
-        {timeline.map((item, index) => (
-          <motion.article
-            key={item.title}
-            className="landing__timeline-item"
-            initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8 }}
-          >
+        {timeline.map((item) => (
+          <Reveal key={item.title} as="article" className="landing__timeline-item" distance={24} threshold={0.35}>
             <span className="landing__timeline-period">{item.period}</span>
             <h3>{item.title}</h3>
             <p>{item.summary}</p>
-          </motion.article>
+          </Reveal>
         ))}
       </div>
     </section>

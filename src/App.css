@@ -5,6 +5,19 @@
   padding: 120px clamp(2rem, 5vw, 4rem) 6rem;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance, 24px), 0);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 .background-canvas {
   position: fixed;
   inset: 0;
@@ -25,14 +38,13 @@
     radial-gradient(circle at 20% 20%, rgba(108, 92, 231, 0.32), transparent 62%),
     radial-gradient(circle at 75% 10%, rgba(0, 245, 255, 0.25), transparent 58%),
     radial-gradient(circle at 50% 80%, rgba(255, 84, 176, 0.28), transparent 68%);
-  filter: blur(72px);
+  filter: blur(48px);
   transform: translate3d(
-    calc((0.45 - var(--pointer-x)) * 140px),
-    calc((0.45 - var(--pointer-y)) * 140px),
+    calc((0.45 - var(--pointer-x)) * 110px),
+    calc((0.45 - var(--pointer-y)) * 110px),
     0
   );
-  transition: filter 0.4s ease;
-  animation: gradientPulse 22s ease-in-out infinite;
+  animation: gradientPulse 28s ease-in-out infinite;
 }
 
 .background-grid {
@@ -41,15 +53,15 @@
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 140px 140px;
-  opacity: 0.3;
-  transform: perspective(1200px) rotateX(65deg)
+  opacity: 0.28;
+  transform: perspective(1200px) rotateX(62deg)
     translate3d(
-      calc((var(--pointer-x) - 0.5) * 120px),
-      calc((var(--pointer-y) - 0.5) * -140px),
+      calc((var(--pointer-x) - 0.5) * 90px),
+      calc((var(--pointer-y) - 0.5) * -110px),
       0
     );
   will-change: transform;
-  animation: gridPulse 36s linear infinite;
+  animation: gridPulse 48s linear infinite;
 }
 
 .background-ring {
@@ -60,8 +72,8 @@
   border: 1px solid rgba(108, 92, 231, 0.22);
   top: -80vmax;
   left: -30vmax;
-  filter: drop-shadow(0 0 40px rgba(108, 92, 231, 0.35));
-  animation: backgroundRingSpin 70s linear infinite;
+  opacity: 0.45;
+  animation: backgroundRingSpin 110s linear infinite;
 }
 
 .background-orbs {
@@ -76,8 +88,8 @@
   top: 18%;
   right: 12%;
   background: radial-gradient(circle at 30% 30%, rgba(0, 245, 255, 0.45), transparent 70%);
-  filter: blur(20px);
-  animation: orbFloat 26s ease-in-out infinite;
+  filter: blur(14px);
+  animation: orbFloat 32s ease-in-out infinite;
   transform: translate3d(
     calc((var(--pointer-x) - 0.5) * 90px),
     calc((var(--pointer-y) - 0.5) * 70px),
@@ -91,7 +103,7 @@
   width: 320px;
   height: 320px;
   background: radial-gradient(circle at 70% 70%, rgba(255, 84, 176, 0.45), transparent 70%);
-  animation-duration: 22s;
+  animation-duration: 28s;
 }
 
 .background-particles {
@@ -104,7 +116,7 @@
   position: absolute;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent 70%);
-  box-shadow: 0 0 8px rgba(108, 92, 231, 0.3);
+  box-shadow: 0 0 6px rgba(108, 92, 231, 0.25);
   opacity: 0;
   animation-name: particleFloat;
   animation-timing-function: ease-in-out;
@@ -180,14 +192,38 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .background-gradient,
+  .background-grid,
+  .background-ring,
+  .background-orb,
+  .background-particle,
+  .navigation,
+  .button,
+  .project-card,
+  .landing__capability,
+  .resume__skill-group,
+  .contact__card {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .navigation {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
-  backdrop-filter: blur(24px);
-  background: linear-gradient(110deg, rgba(8, 9, 25, 0.84), rgba(8, 9, 25, 0.65));
+  backdrop-filter: blur(14px);
+  background: linear-gradient(110deg, rgba(8, 9, 25, 0.78), rgba(8, 9, 25, 0.6));
   border-bottom: 1px solid rgba(108, 92, 231, 0.2);
 }
 
@@ -335,6 +371,11 @@
   max-width: 640px;
 }
 
+.page-hero__lead {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
 .section-heading {
   display: flex;
   flex-direction: column;
@@ -399,7 +440,8 @@
   top: -160px;
   right: 12%;
   background: radial-gradient(circle, rgba(0, 245, 255, 0.35), transparent 70%);
-  filter: blur(30px);
+  filter: blur(22px);
+  will-change: opacity, transform;
 }
 
 .landing__halo {
@@ -408,7 +450,8 @@
   bottom: -260px;
   left: -120px;
   background: radial-gradient(circle, rgba(255, 84, 176, 0.25), transparent 65%);
-  filter: blur(20px);
+  filter: blur(16px);
+  will-change: opacity, transform;
 }
 
 .landing__stats {
@@ -422,8 +465,8 @@
   border-radius: 24px;
   background: var(--bg-panel);
   border: 1px solid rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 24px 40px rgba(5, 9, 30, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 30px rgba(5, 9, 30, 0.28);
 }
 
 .landing__stat-value {
@@ -461,12 +504,14 @@
   border-radius: 24px;
   background: var(--bg-panel-strong);
   border: 1px solid rgba(108, 92, 231, 0.25);
-  box-shadow: 0 30px 48px rgba(4, 8, 30, 0.4);
+  box-shadow: 0 24px 38px rgba(4, 8, 30, 0.32);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform: translateY(0);
 }
 
 .landing__capability:hover {
-  box-shadow: 0 35px 60px rgba(108, 92, 231, 0.35);
+  transform: translateY(-8px);
+  box-shadow: 0 32px 54px rgba(108, 92, 231, 0.32);
 }
 
 .landing__capability h3 {
@@ -510,7 +555,7 @@
   border-radius: 22px;
   background: rgba(12, 14, 36, 0.85);
   border: 1px solid rgba(0, 245, 255, 0.2);
-  box-shadow: 0 25px 45px rgba(4, 8, 22, 0.35);
+  box-shadow: 0 20px 36px rgba(4, 8, 22, 0.28);
 }
 
 .landing__timeline-period {
@@ -548,9 +593,16 @@
   border-radius: 28px;
   background: rgba(8, 10, 28, 0.9);
   border: 1px solid rgba(108, 92, 231, 0.25);
-  box-shadow: 0 40px 60px rgba(4, 6, 18, 0.4);
+  box-shadow: 0 28px 48px rgba(4, 6, 18, 0.32);
   position: relative;
   overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 36px 58px rgba(4, 6, 18, 0.36);
 }
 
 .project-card__media {
@@ -563,12 +615,22 @@
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(0, 245, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .project-card__image--1 {
   transform: translateX(20%);
   opacity: 0.9;
+}
+
+.project-card:hover .project-card__image {
+  transform: translate3d(0, -8px, 0) scale(1.03);
+}
+
+.project-card:hover .project-card__image--1 {
+  transform: translate3d(20%, -8px, 0) scale(1.03);
 }
 
 .project-card__content {
@@ -676,8 +738,8 @@
 }
 
 .contact__card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 28px 45px rgba(0, 245, 255, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 22px 36px rgba(0, 245, 255, 0.22);
   border-color: rgba(0, 245, 255, 0.35);
   color: var(--text-primary);
 }
@@ -707,7 +769,7 @@
   border-radius: 26px;
   background: rgba(12, 14, 36, 0.9);
   border: 1px solid rgba(108, 92, 231, 0.25);
-  box-shadow: 0 30px 55px rgba(4, 8, 26, 0.35);
+  box-shadow: 0 24px 40px rgba(4, 8, 26, 0.3);
 }
 
 .contact__availability ul {
@@ -740,7 +802,7 @@
   border-radius: 24px;
   background: rgba(10, 12, 32, 0.9);
   border: 1px solid rgba(0, 245, 255, 0.2);
-  box-shadow: 0 30px 48px rgba(4, 8, 24, 0.35);
+  box-shadow: 0 24px 38px rgba(4, 8, 24, 0.3);
 }
 
 .resume__timeline-year {
@@ -780,12 +842,14 @@
   border-radius: 22px;
   background: rgba(12, 14, 38, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 24px 40px rgba(6, 8, 28, 0.35);
+  box-shadow: 0 20px 34px rgba(6, 8, 28, 0.3);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform: translateY(0);
 }
 
 .resume__skill-group:hover {
-  box-shadow: 0 30px 52px rgba(108, 92, 231, 0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 48px rgba(108, 92, 231, 0.32);
 }
 
 .resume__skill-group h3 {

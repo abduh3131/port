@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition.jsx'
+import Reveal from '../components/Reveal.jsx'
 
 const timeline = [
   {
@@ -67,32 +67,23 @@ const recognitions = [
 const Resume = () => (
   <PageTransition className="resume">
     <section className="page-hero">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      <Reveal as="h1" distance={16}>
         Résumé & Background
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.2 }}
-      >
+      </Reveal>
+      <Reveal as="p" className="page-hero__lead" delay={0.1}>
         Leading teams where imagination and engineering meet. I translate visionary briefs into systems
         that scale gracefully.
-      </motion.p>
-      <motion.a
+      </Reveal>
+      <Reveal
+        as="a"
         className="button button--primary"
         href="/resume.pdf"
         target="_blank"
         rel="noreferrer"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.4 }}
+        delay={0.2}
       >
         Download PDF
-      </motion.a>
+      </Reveal>
     </section>
 
     <section className="resume__timeline">
@@ -102,13 +93,12 @@ const Resume = () => (
       </div>
       <div className="resume__timeline-grid">
         {timeline.map((item, index) => (
-          <motion.article
+          <Reveal
             key={item.role}
+            as="article"
             className="resume__timeline-item"
-            initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8 }}
+            distance={index % 2 === 0 ? 30 : -30}
+            threshold={0.35}
           >
             <span className="resume__timeline-year">{item.year}</span>
             <h3>{item.role}</h3>
@@ -117,7 +107,7 @@ const Resume = () => (
                 <li key={bullet}>{bullet}</li>
               ))}
             </ul>
-          </motion.article>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -129,15 +119,7 @@ const Resume = () => (
       </div>
       <div className="resume__skill-grid">
         {skillGroups.map((group) => (
-          <motion.article
-            key={group.title}
-            className="resume__skill-group"
-            whileHover={{ translateY: -8 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
-          >
+          <Reveal key={group.title} as="article" className="resume__skill-group">
             <h3>{group.title}</h3>
             <ul>
               {group.skills.map((skill) => (
@@ -147,25 +129,19 @@ const Resume = () => (
                 </li>
               ))}
             </ul>
-          </motion.article>
+          </Reveal>
         ))}
       </div>
     </section>
 
-    <motion.section
-      className="resume__recognition"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8 }}
-    >
+    <Reveal as="section" className="resume__recognition" delay={0.1}>
       <h2>Spotlight Moments</h2>
       <ul>
         {recognitions.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
-    </motion.section>
+    </Reveal>
   </PageTransition>
 )
 

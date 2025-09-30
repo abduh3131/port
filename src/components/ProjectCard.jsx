@@ -1,23 +1,15 @@
-import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import Reveal from './Reveal.jsx'
 
 const ProjectCard = ({ project, index }) => (
-  <motion.article
-    className="project-card"
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.8, delay: index * 0.1 }}
-  >
+  <Reveal as="article" className="project-card" delay={Math.min(index * 0.08, 0.35)}>
     <div className="project-card__media">
       {project.images.map((image, idx) => (
-        <motion.img
+        <img
           key={image.src}
           src={image.src}
           alt={image.alt}
           className={`project-card__image project-card__image--${idx}`}
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: 'spring', stiffness: 180, damping: 18 }}
         />
       ))}
     </div>
@@ -48,7 +40,7 @@ const ProjectCard = ({ project, index }) => (
         </div>
       </div>
     </div>
-  </motion.article>
+  </Reveal>
 )
 
 export default ProjectCard

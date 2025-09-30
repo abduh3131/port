@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import PageTransition from '../components/PageTransition.jsx'
+import Reveal from '../components/Reveal.jsx'
 
 const channels = [
   {
@@ -29,53 +29,37 @@ const channels = [
 const Contact = () => (
   <PageTransition className="contact">
     <section className="page-hero">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      <Reveal as="h1" distance={16}>
         Open Communications
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.2 }}
-      >
+      </Reveal>
+      <Reveal as="p" className="page-hero__lead" delay={0.1}>
         I thrive on bold ideas and collaborative teams. Reach out through any channel and let’s
         architect what’s next.
-      </motion.p>
+      </Reveal>
     </section>
     <div className="contact__grid">
       {channels.map((channel, index) => {
         const Icon = channel.icon
         return (
-          <motion.a
+          <Reveal
             key={channel.label}
             href={channel.url}
             className="contact__card"
             target={channel.url.startsWith('http') ? '_blank' : undefined}
             rel={channel.url.startsWith('http') ? 'noreferrer' : undefined}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
+            as="a"
+            delay={index * 0.05}
           >
             <Icon />
             <span className="contact__label">{channel.label}</span>
             <span className="contact__handle">{channel.handle}</span>
             <p>{channel.description}</p>
             <span className="contact__cta">Initiate transmission →</span>
-          </motion.a>
+          </Reveal>
         )
       })}
     </div>
-    <motion.section
-      className="contact__availability"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-    >
+    <Reveal as="section" className="contact__availability" delay={0.2}>
       <h2>Current bandwidth</h2>
       <p>
         Booking advisory intensives for spring 2026. Limited slots remain for immersive product sprints
@@ -86,7 +70,7 @@ const Contact = () => (
         <li>🛰️ Fractional leadership for emerging product orgs</li>
         <li>🔭 Speaking engagements on futuristic experience design</li>
       </ul>
-    </motion.section>
+    </Reveal>
   </PageTransition>
 )
 

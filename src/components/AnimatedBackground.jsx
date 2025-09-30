@@ -7,15 +7,31 @@ const AnimatedBackground = () => {
 
   useEffect(() => {
     const root = document.documentElement
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
     let isAnimating = false
+
+    const setPointer = (x, y) => {
+      pointerTarget.current = { x, y }
+      pointerPosition.current = { x, y }
+      root.style.setProperty('--pointer-x', x.toFixed(4))
+      root.style.setProperty('--pointer-y', y.toFixed(4))
+    }
+
+    const stopAnimation = () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
+      isAnimating = false
+    }
 
     const animatePointer = () => {
       const { x: targetX, y: targetY } = pointerTarget.current
       const current = pointerPosition.current
 
-      current.x += (targetX - current.x) * 0.08
-      current.y += (targetY - current.y) * 0.08
+      current.x += (targetX - current.x) * 0.06
+      current.y += (targetY - current.y) * 0.06
 
       root.style.setProperty('--pointer-x', current.x.toFixed(4))
       root.style.setProperty('--pointer-y', current.y.toFixed(4))
@@ -23,11 +39,10 @@ const AnimatedBackground = () => {
       const deltaX = Math.abs(targetX - current.x)
       const deltaY = Math.abs(targetY - current.y)
 
-      if (deltaX > 0.0005 || deltaY > 0.0005) {
+      if (deltaX > 0.001 || deltaY > 0.001) {
         rafRef.current = requestAnimationFrame(animatePointer)
       } else {
-        rafRef.current = null
-        isAnimating = false
+        stopAnimation()
       }
     }
 
@@ -45,30 +60,53 @@ const AnimatedBackground = () => {
       }
     }
 
-    root.style.setProperty('--pointer-x', pointerPosition.current.x.toString())
-    root.style.setProperty('--pointer-y', pointerPosition.current.y.toString())
+    const enablePointerTracking = () => {
+      window.removeEventListener('pointermove', handlePointerMove)
+      window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    }
 
-    window.addEventListener('pointermove', handlePointerMove)
+    const disablePointerTracking = () => {
+      window.removeEventListener('pointermove', handlePointerMove)
+      stopAnimation()
+      setPointer(0.5, 0.5)
+    }
+
+    const handlePreferenceChange = (event) => {
+      if (event.matches) {
+        disablePointerTracking()
+      } else {
+        setPointer(pointerPosition.current.x, pointerPosition.current.y)
+        enablePointerTracking()
+      }
+    }
+
+    setPointer(pointerPosition.current.x, pointerPosition.current.y)
+
+    if (mediaQuery.matches) {
+      disablePointerTracking()
+    } else {
+      enablePointerTracking()
+    }
+
+    mediaQuery.addEventListener('change', handlePreferenceChange)
 
     return () => {
-      window.removeEventListener('pointermove', handlePointerMove)
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current)
-      }
+      disablePointerTracking()
+      mediaQuery.removeEventListener('change', handlePreferenceChange)
     }
   }, [])
 
   const particles = useMemo(
     () =>
-      Array.from({ length: 28 }, (_, index) => ({
+      Array.from({ length: 14 }, (_, index) => ({
         id: index,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        duration: 16 + Math.random() * 12,
-        delay: Math.random() * 12,
-        size: 3 + Math.random() * 7,
-        driftX: (Math.random() - 0.5) * 80,
-        driftY: -40 - Math.random() * 60,
+        duration: 20 + Math.random() * 16,
+        delay: Math.random() * 14,
+        size: 3 + Math.random() * 6,
+        driftX: (Math.random() - 0.5) * 60,
+        driftY: -30 - Math.random() * 50,
       })),
     [],
   )
